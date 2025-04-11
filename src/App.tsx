@@ -30,7 +30,7 @@ function App() {
       • NÃO inclua corpo, rodapé ou explicações extras — apenas o texto final do commit.
 
       Sobre o uso de prefixos (feat, fix, chore, etc.):
-      - O uso de prefixo ${incluirPrefixo ? "é obrigatório" : "é NÃO obrigatório"}.
+      - O uso de prefixo ${incluirPrefixo ? "é obrigatório" : "NÃO obrigatório"}.
       - Se usar prefixo, siga o padrão do Conventional Commits:  
         tipo(opcionalEscopo): descrição  
         Ex: feat(auth): adicionar suporte a login
@@ -71,80 +71,80 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
-      <div className="bg-white shadow-md rounded-md p-6 w-full max-w-md space-y-6">
-        <h1 className="text-2xl font-bold text-center text-blue-600">
-          Gerador de Commits
-        </h1>
-
-        <div>
-          <label htmlFor="mensagem" className="block text-sm font-medium text-gray-700 mb-1">
-            Mensagem do commit
-          </label>
-          <textarea
-            id="mensagem"
-            rows={4}
-            className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400 resize-none"
-            placeholder="Descreva sua alteração..."
-            value={mensagem}
-            onChange={(e) => setMensagem(e.target.value)}
-          />
-        </div>
-
-        <div className="flex items-center gap-2">
-          <input
-            id="prefixo"
-            type="checkbox"
-            className="h-4 w-4 text-blue-600 border-gray-300 rounded"
-            checked={incluirPrefixo}
-            onChange={(e) => setIncluirPrefixo(e.target.checked)}
-          />
-          <label htmlFor="prefixo" className="text-sm text-gray-700">
-            Incluir prefixo (feat:, fix:, etc.)
-          </label>
-        </div>
-
-        <div>
-          <label htmlFor="idioma" className="block text-sm font-medium text-gray-700 mb-1">
-            Idioma
-          </label>
-          <select
-            id="idioma"
-            className="w-full border border-gray-300 rounded-md p-2"
-            value={idioma}
-            onChange={(e) => setIdioma(e.target.value)}
-          >
-            <option value="pt">Português</option>
-            <option value="en">Inglês</option>
-            <option value="es">Espanhol</option>
-          </select>
-        </div>
-
-        <button
-          onClick={gerarCommit}
-          disabled={carregando}
-          className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition disabled:opacity-50"
-        >
-          {carregando ? "Gerando..." : "Gerar Commit"}
-        </button>
-
-        {resposta && (
-          <div className="mt-4 space-y-2">
-            <label className="block text-sm font-medium text-gray-700">Resultado:</label>
-            <div className="bg-gray-100 p-3 rounded-md text-sm text-gray-800 whitespace-pre-wrap">
-              {resposta}
-            </div>
-            <button
-              onClick={() => copiar(resposta)}
-              className="text-sm text-blue-600 hover:underline"
-            >
-              Copiar commit
-            </button>
-          </div>
-        )}
+    <div className="min-h-screen bg-gradient-to-br from-[#f0f4ff] to-[#e0eaff] flex items-center justify-center p-4">
+    <div className="bg-white/70 backdrop-blur-xl shadow-xl rounded-2xl p-8 w-full max-w-xl border border-white/30 space-y-6">
+      <h1 className="text-3xl font-bold text-center text-indigo-600 tracking-tight">
+        Commit Generator AI 🚀
+      </h1>
+  
+      <div>
+        <label htmlFor="mensagem" className="block text-sm font-medium text-gray-700 mb-1">
+          What did you change?
+        </label>
+        <textarea
+          id="mensagem"
+          rows={4}
+          className="w-full border border-gray-300 rounded-lg p-3 focus:outline-none focus:ring-2 focus:ring-indigo-400 resize-none bg-white/80 backdrop-blur"
+          placeholder="Describe your changes here..."
+          value={mensagem}
+          onChange={(e) => setMensagem(e.target.value)}
+        />
       </div>
+  
+      <div className="flex items-center gap-2">
+      <input
+        id="prefixo"
+        type="checkbox"
+        className="h-4 w-4 text-indigo-600 border-gray-300 rounded"
+        checked={incluirPrefixo}
+        onChange={(e) => setIncluirPrefixo(e.target.checked)}
+      />
+      <label htmlFor="prefixo" className="text-sm text-gray-700 flex items-center gap-1">
+        Use prefix (feat:, fix:, etc.)
+      </label>
     </div>
+
+  
+      <div>
+        <label htmlFor="idioma" className="block text-sm font-medium text-gray-700 mb-1">
+          Language
+        </label>
+        <select
+          id="idioma"
+          className="w-full border border-gray-300 rounded-lg p-3 bg-white/80 backdrop-blur"
+          value={idioma}
+          onChange={(e) => setIdioma(e.target.value)}
+        >
+          <option value="pt">Portuguese</option>
+          <option value="en">English</option>
+          <option value="es">Spanish</option>
+        </select>
+      </div>
+  
+      <button
+        onClick={gerarCommit}
+        disabled={carregando}
+        className="w-full bg-indigo-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-indigo-700 transition disabled:opacity-50"
+      >
+        {carregando ? "Generating..." : "Generate Commit"}
+      </button>
+  
+      {resposta && (
+        <div className="mt-4 space-y-2">
+          <label className="block text-sm font-medium text-gray-700">Result:</label>
+          <div className="bg-gray-100/70 p-4 rounded-md text-sm text-gray-800 whitespace-pre-wrap shadow-inner">
+            {resposta}
+          </div>
+          <button
+            onClick={() => copiar(resposta)}
+            className="text-sm text-indigo-600 hover:underline"
+          >
+            Copy to clipboard
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
   );
 }
-
 export default App;
